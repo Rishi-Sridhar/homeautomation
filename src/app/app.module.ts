@@ -1,3 +1,4 @@
+import { BtaddressPage } from './../pages/btaddress/btaddress';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -14,7 +15,8 @@ import { OptionsPage } from '../pages/options/options';
   declarations: [
     MyApp,
     HomePage,
-    OptionsPage
+    OptionsPage,
+    BtaddressPage
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import { OptionsPage } from '../pages/options/options';
   entryComponents: [
     MyApp,
     HomePage,
-    OptionsPage
+    OptionsPage,
+    BtaddressPage
   ],
   providers: [
     StatusBar,
