@@ -1,12 +1,56 @@
 <ion-header>
   <ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onShowOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>
-      Ionic Blank
+      Home Automation
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <button ion-button block (click)="on()">On</button>
-  <button ion-button block (click)="off()">Off</button>
+  <br><br>
+  <ion-grid>
+      <h1 style="text-align:center">LIGHT</h1>
+    <ion-row>
+      <ion-col>
+         <button ion-button block (click)="lightOn()">On</button>
+      </ion-col>
+        <ion-col>
+          <button ion-button block (click)="lightOff()">Off</button>
+        </ion-col>
+    </ion-row>
+      <br>
+      <h1 style="text-align:center">FAN</h1>
+      <ion-row>
+      <ion-col>
+         <button ion-button block (click)="fanOn()">On</button>
+      </ion-col>
+        <ion-col>
+          <button ion-button block (click)="fanOff()">Off</button>
+        </ion-col>
+    </ion-row>
+      <br><br>
+      <h1 style="text-align:center">ALL (LIGHT AND FAN)</h1>
+      <ion-row>
+      <ion-col>
+         <button ion-button block (click)="allOn()">On</button>
+      </ion-col>
+        <ion-col>
+          <button ion-button block (click)="allOff()">Off</button>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-list>
+    <ion-item *ngFor="let list of lists">{{list.name}} : {{list.address}}</ion-item>
+  </ion-list>
+
+  <button ion-button block (click)="turnoff()">Turn off Bluetooth</button>
+  <button ion-button block (click)="onEnableBT()">Turn on Bluetooth</button>
+  <button ion-button block (click)="onExit()">Exit App</button>
 </ion-content>

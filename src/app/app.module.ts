@@ -3,15 +3,18 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { BluetoothSerial } from '@ionic-native/bluetooth-serial'
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+import { Diagnostic } from '@ionic-native/diagnostic';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { OptionsPage } from '../pages/options/options';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    OptionsPage
   ],
   imports: [
     BrowserModule,
@@ -20,12 +23,14 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    OptionsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     BluetoothSerial,
+    Diagnostic,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
