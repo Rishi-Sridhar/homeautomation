@@ -320,6 +320,42 @@ export class HomePage {
       }).present();
       this.lightOn();
      }
+    else if((matches.indexOf("light off")>-1)||(matches.indexOf("light bandh")>-1)) {
+       this.toastCtrl.create({
+        message: 'Input has been matched',
+        duration: 5000
+      }).present();
+      this.lightOff();
+     }
+    else if((matches.indexOf("fan on")>-1)||(matches.indexOf("fan chalu")>-1)) {
+       this.toastCtrl.create({
+        message: 'Input has been matched',
+        duration: 5000
+      }).present();
+      this.fanOn();
+     }
+    else if((matches.indexOf("fan off")>-1)||(matches.indexOf("fan bandh")>-1)) {
+       this.toastCtrl.create({
+        message: 'Input has been matched',
+        duration: 5000
+      }).present();
+      this.fanOff();
+     }
+    else if((matches.indexOf("Bluetooth off")>-1)||(matches.indexOf("Bluetooth bandh")>-1)) {
+       this.toastCtrl.create({
+        message: 'Input has been matched',
+        duration: 5000
+      }).present();
+      this.turnoff();
+     }
+    else if((matches.indexOf("exit app")>-1)||(matches.indexOf("app bandh")>-1)) {
+       this.toastCtrl.create({
+        message: 'Input has been matched',
+        duration: 5000
+      }).present();
+      this.onExit();
+     }
+
 
       },
     (onerror) => {
