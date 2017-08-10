@@ -10,6 +10,7 @@ import { Diagnostic } from '@ionic-native/diagnostic';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { OptionsPage } from '../pages/options/options';
+import {SpeechRecognition} from '@ionic-native/speech-recognition';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { OptionsPage } from '../pages/options/options';
     SplashScreen,
     BluetoothSerial,
     Diagnostic,
+    SpeechRecognition,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -1,3 +1,4 @@
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { BtaddressPage } from './../btaddress/btaddress';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
@@ -13,7 +14,7 @@ export class HomePage {
   public lists: any = [];
   public myBluetoothAddress: string = '20:13:03:13:02:58';
 
-  constructor(private bluetooth: BluetoothSerial, private toastCtrl: ToastController, private diag: Diagnostic, private platform: Platform, private popoverCtrl: PopoverController, private modalCtrl: ModalController) {
+  constructor(private bluetooth: BluetoothSerial, private toastCtrl: ToastController, private diag: Diagnostic, private platform: Platform, private popoverCtrl: PopoverController, private modalCtrl: ModalController, private speech: SpeechRecognition) {
   }
 
   ionViewDidLoad() {
@@ -303,5 +304,32 @@ export class HomePage {
       }).present();
     this.myBluetoothAddress=this.lists[i].address;
   }
+
+  onSpeech() {
+    this.speech.requestPermission().then(()=> {
+      this.speech.startListening().subscribe(
+      (matches: Array<string>) => {
+       this.toastCtrl.create({
+        message: 'Input matches to: ' + matches,
+        duration: 5000
+      }).present();
+     if((matches.indexOf("light on")>-1)||(matches.indexOf("light chalu")>-1)) {
+       this.toastCtrl.create({
+        message: 'Input has been matched',
+        duration: 5000
+      }).present();
+      this.lightOn();
+     }
+
+      },
+    (onerror) => {
+      this.toastCtrl.create({
+        message: 'Error in voice: ' + onerror,
+        duration: 5000
+      }).present();
+    }
+    )})
+    }
+
 
 }
