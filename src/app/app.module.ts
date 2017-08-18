@@ -1,3 +1,5 @@
+import { Home2Page } from './../pages/home2/home2';
+import { TabsPage } from './../pages/tabs/tabs';
 import { BtaddressPage } from './../pages/btaddress/btaddress';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -6,6 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 import { Diagnostic } from '@ionic-native/diagnostic';
+import { SuperTabsModule } from 'ionic2-super-tabs';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -17,18 +20,23 @@ import {SpeechRecognition} from '@ionic-native/speech-recognition';
     MyApp,
     HomePage,
     OptionsPage,
-    BtaddressPage
+    BtaddressPage,
+    TabsPage,
+    Home2Page
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    SuperTabsModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     OptionsPage,
-    BtaddressPage
+    BtaddressPage,
+    TabsPage,
+    Home2Page
   ],
   providers: [
     StatusBar,

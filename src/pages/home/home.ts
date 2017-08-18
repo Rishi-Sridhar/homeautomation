@@ -11,26 +11,21 @@ import { OptionsPage } from '../options/options';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  tabBarElement: any;
+  splash = true;
   public lists: any = [];
   public myBluetoothAddress: string = '20:13:03:13:02:58';
 
   constructor(private bluetooth: BluetoothSerial, private toastCtrl: ToastController, private diag: Diagnostic, private platform: Platform, private popoverCtrl: PopoverController, private modalCtrl: ModalController, private speech: SpeechRecognition) {
+  this.tabBarElement = document.querySelector('.tabbar');
   }
 
   ionViewDidLoad() {
-    this.bluetooth.isEnabled().then(suc => {
-      this.toastCtrl.create({
-        message: 'Bluetooth is enabled ' + suc,
-        duration: 5000
-      }).present();
-    })
-      .catch(err => {
-        this.enableBT();
-        this.toastCtrl.create({
-          message: 'Bluetooth is disabled ' + err,
-          duration: 5000
-        }).present();
-      })
+    this.tabBarElement.style.display = 'none';
+    setTimeout(() => {
+      this.splash = false;
+      this.tabBarElement.style.display = 'flex';
+    }, 4000);
   }
 
   async enableBT() {
@@ -295,6 +290,33 @@ export class HomePage {
       }
     })
 
+  }
+
+  onSpeedChange() {
+    this.bluetooth.isEnabled().then(suc => {
+      this.bluetooth.connectInsecure(this.myBluetoothAddress).subscribe((data) => {
+        this.toastCtrl.create({
+          message: 'connected ' + data,
+          duration: 2500
+        }).present();
+
+        this.bluetooth.write("speed")
+          .then(y => {
+            this.toastCtrl.create({
+              message: 'wrote ' + y,
+              duration: 2500
+            }).present();
+          })
+          .catch(err => {
+            this.toastCtrl.create({
+              message: 'error: ' + err,
+              duration: 2500
+            }).present();
+          })
+      });
+    }).catch(err => {
+      this.enableBT();
+    })
   }
 
   onClick(i:number) {

@@ -1,3 +1,10 @@
+<div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
+  <div class="flb">
+    <div class="Aligner-item Aligner-item--top"></div>
+    <img src="assets/logo.png">
+    <div class="Aligner-item Aligner-item--bottom"></div>
+  </div>
+</div>
 <ion-header>
   <ion-navbar>
     <ion-buttons end>
@@ -44,6 +51,8 @@
         </ion-col>
     </ion-row>
   </ion-grid>
+  <button ion-button block (click)="onSpeedChange()">Speed Change</button>
 <button ion-button block (click)="onSpeech()">Voice Command</button>
+
 
 </ion-content>
