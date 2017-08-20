@@ -1,4 +1,4 @@
-App for Home Automation ceeated using Ionic 2 framework.
+App for Home Automation created using Ionic 2 framework.
 
 This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
